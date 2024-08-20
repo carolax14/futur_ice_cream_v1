@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:futur_ice_cream_v1/const.dart";
 import "package:futur_ice_cream_v1/models/ice_cream.dart";
+import "package:like_button/like_button.dart";
 
 /*
 
@@ -11,16 +12,22 @@ User can add to cart by tapping the tile.
 
 */
 
-// ignore: must_be_immutable
-class IceCreamTile extends StatelessWidget {
+class IceCreamTile extends StatefulWidget {
   final IceCream iceCream;
-  void Function()? onPressed;
-  bool isFavorited = false;
-  IceCreamTile({
+  final void Function()? onPressed;
+
+  const IceCreamTile({
     super.key,
     required this.iceCream,
     required this.onPressed,
   });
+
+  @override
+  _IceCreamTileState createState() => _IceCreamTileState();
+}
+
+class _IceCreamTileState extends State<IceCreamTile> {
+  bool isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +54,7 @@ class IceCreamTile extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(12),
                   child: Text(
-                    '${iceCream.price}€',
+                    '${widget.iceCream.price}€',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -62,12 +69,12 @@ class IceCreamTile extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 54.0, vertical: 0),
-              child: Image.asset(iceCream.imagePath),
+              child: Image.asset(widget.iceCream.imagePath),
             ),
 
             // ice cream flavor
             Text(
-              iceCream.name,
+              widget.iceCream.name,
               style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
@@ -89,17 +96,35 @@ class IceCreamTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // love icon
-                  IconButton(
+
+                  // ignore: prefer_const_constructors
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LikeButton(
+                      size: 25,
+                      likeBuilder: (isTapped) {
+                        return Icon(
+                          Icons.favorite,
+                          color: isTapped
+                              ? const Color.fromARGB(195, 209, 49, 158)
+                              : Colors.white38,
+                        );
+                      },
+                    ),
+                  ),
+                  /* IconButton(
                     icon: Icon(
                       isFavorited ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorited ? Colors.red : Colors.black26,
+                      color: isFavorited
+                          ? Color.fromARGB(195, 209, 49, 158)
+                          : Colors.black26,
                     ),
                     onPressed: () {
                       setState(() {
                         isFavorited = !isFavorited;
                       });
                     },
-                  ),
+                  ),*/
 
                   // view button
                   IconButton(
@@ -107,7 +132,7 @@ class IceCreamTile extends StatelessWidget {
                       Icons.arrow_forward_rounded,
                       color: Colors.black54,
                     ),
-                    onPressed: onPressed,
+                    onPressed: widget.onPressed,
                   ),
                 ],
               ),
@@ -117,6 +142,4 @@ class IceCreamTile extends StatelessWidget {
       ),
     );
   }
-
-  void setState(Null Function() param0) {}
 }
