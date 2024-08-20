@@ -1,16 +1,9 @@
-import "package:flutter/material.dart";
-import "package:futur_ice_cream_v1/const.dart";
-import "package:futur_ice_cream_v1/models/ice_cream.dart";
-import "package:like_button/like_button.dart";
-
-/*
-
-ICE CREAM TILE
-
-This is the tile seen on the shop page.
-User can add to cart by tapping the tile.
-
-*/
+import 'package:flutter/material.dart';
+import 'package:futur_ice_cream_v1/const.dart';
+import 'package:futur_ice_cream_v1/models/favorite_service.dart';
+import 'package:futur_ice_cream_v1/models/ice_cream.dart';
+import 'package:like_button/like_button.dart';
+// Importez le service de favoris
 
 class IceCreamTile extends StatefulWidget {
   final IceCream iceCream;
@@ -27,8 +20,6 @@ class IceCreamTile extends StatefulWidget {
 }
 
 class _IceCreamTileState extends State<IceCreamTile> {
-  bool isFavorited = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -46,7 +37,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: buttonColor,
+                    color: secondaryHeaderColor,
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
@@ -96,8 +87,6 @@ class _IceCreamTileState extends State<IceCreamTile> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // love icon
-
-                  // ignore: prefer_const_constructors
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: LikeButton(
@@ -106,25 +95,21 @@ class _IceCreamTileState extends State<IceCreamTile> {
                         return Icon(
                           Icons.favorite,
                           color: isTapped
-                              ? const Color.fromARGB(195, 209, 49, 158)
+                              ? const Color.fromARGB(204, 187, 10, 99)
                               : Colors.white38,
                         );
                       },
+                      onTap: (isLiked) async {
+                        if (isLiked) {
+                          FavoriteIceCreamsService.removeFavorite(
+                              widget.iceCream);
+                        } else {
+                          FavoriteIceCreamsService.addFavorite(widget.iceCream);
+                        }
+                        return !isLiked;
+                      },
                     ),
                   ),
-                  /* IconButton(
-                    icon: Icon(
-                      isFavorited ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorited
-                          ? Color.fromARGB(195, 209, 49, 158)
-                          : Colors.black26,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isFavorited = !isFavorited;
-                      });
-                    },
-                  ),*/
 
                   // view button
                   IconButton(

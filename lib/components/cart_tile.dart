@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:futur_ice_cream_v1/const.dart';
 import '../models/ice_cream.dart';
 
 /*

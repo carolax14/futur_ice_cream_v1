@@ -3,7 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/pages/cart_page.dart';
 import 'package:futur_ice_cream_v1/pages/shop_page.dart';
-import 'package:futur_ice_cream_v1/pages/test.dart';
+import 'package:futur_ice_cream_v1/pages/favorite_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const ShopPage(),
     const CartPage(),
-    const TestPage(),
+    FavoriteIceCreamsPage(),
   ];
 
   @override
