@@ -25,8 +25,8 @@ class _HomePageState extends State<HomePage> {
   // Pages
   final List<Widget> _pages = [
     const ShopPage(),
-    const CartPage(),
     FavoriteIceCreamsPage(),
+    const CartPage(),
   ];
 
   @override
@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
         height: 60.0,
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.shopping_bag_rounded, size: 30, color: Colors.white),
-          Icon(Icons.settings, size: 30, color: Colors.white),
+          Icon(Icons.favorite, size: 30, color: Colors.white),
+          Icon(Icons.shopping_bag, size: 30, color: Colors.white),
         ],
         color: Colors.white30,
         buttonBackgroundColor: myGradient.colors[2],

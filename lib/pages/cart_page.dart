@@ -42,9 +42,9 @@ class _CartPageState extends State<CartPage> {
               Padding(
                 padding: EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
                 child: Text(
-                  'Your Cart',
+                  'My Cart',
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),

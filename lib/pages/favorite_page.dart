@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/favorite_service.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class FavoriteIceCreamsPage extends StatelessWidget {
+class FavoriteIceCreamsPage extends StatefulWidget {
+  @override
+  _FavoriteIceCreamsPageState createState() => _FavoriteIceCreamsPageState();
+}
+
+class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
   @override
   Widget build(BuildContext context) {
     List<IceCream> favorites = FavoriteIceCreamsService.getFavorites();
@@ -12,17 +18,16 @@ class FavoriteIceCreamsPage extends StatelessWidget {
       body: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Favorite Ice Creams',
                   style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ],
             ),
@@ -32,12 +37,12 @@ class FavoriteIceCreamsPage extends StatelessWidget {
                 ? const Center(
                     child: Text(
                       'No favorites yet!',
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
+                      style: TextStyle(fontSize: 20, color: Colors.white60),
                     ),
                   )
                 : CarouselSlider.builder(
                     options: CarouselOptions(
-                      height: 300.0,
+                      height: 350.0,
                       enlargeCenterPage: true,
                       autoPlay: true,
                       aspectRatio: 16 / 9,
@@ -73,6 +78,23 @@ class FavoriteIceCreamsPage extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.black38,
                               fontSize: 14,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                FavoriteIceCreamsService.removeFavorite(
+                                    iceCream);
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  myGradient.colors[4], // Button color
+                            ),
+                            child: const Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ],
