@@ -42,9 +42,9 @@ class CartTile extends StatelessWidget {
         ),
         subtitle: Text('${iceCream.price}€'),
         trailing: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.delete,
-            color: bodyText2,
+            color: Colors.black54,
           ),
           onPressed: onPressed,
         ),

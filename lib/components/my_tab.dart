@@ -12,7 +12,7 @@ class MyTab extends StatelessWidget {
       height: 60,
       child: Container(
         padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white24,
           // borderRadius: BorderRadius.circular(12),
           shape: BoxShape.circle,

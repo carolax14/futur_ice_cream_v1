@@ -11,18 +11,18 @@ class _TestPageState extends State<TestPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  final _selectedColor = Color(0xff1a73e8);
-  final _unselectedColor = Color(0xff5f6368);
+  final _selectedColor = const Color(0xff1a73e8);
+  final _unselectedColor = const Color(0xff5f6368);
   final _tabs = [
-    Tab(text: 'Tab1'),
-    Tab(text: 'Tab2'),
-    Tab(text: 'Tab3'),
+    const Tab(text: 'Tab1'),
+    const Tab(text: 'Tab2'),
+    const Tab(text: 'Tab3'),
   ];
 
   final _iconTabs = [
-    Tab(icon: Icon(Icons.home)),
-    Tab(icon: Icon(Icons.search)),
-    Tab(icon: Icon(Icons.settings)),
+    const Tab(icon: Icon(Icons.home)),
+    const Tab(icon: Icon(Icons.search)),
+    const Tab(icon: Icon(Icons.settings)),
   ];
 
   @override
@@ -46,7 +46,7 @@ class _TestPageState extends State<TestPage>
             backgroundColor: Colors.transparent,
             elevation: 0,
             bottom: TabBar(
-                labelColor: Colors.redAccent,
+                labelColor: Colors.green,
                 unselectedLabelColor: Colors.white,
                 indicatorSize: TabBarIndicatorSize.label,
                 indicator: BoxDecoration(
@@ -73,7 +73,7 @@ class _TestPageState extends State<TestPage>
                   ),
                 ]),
           ),
-          body: TabBarView(children: const [
+          body: const TabBarView(children: [
             Icon(Icons.apps),
             Icon(Icons.movie),
             Icon(Icons.games),

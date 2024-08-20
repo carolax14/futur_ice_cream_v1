@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           Icon(Icons.settings, size: 30, color: Colors.white),
         ],
         color: Colors.white30,
-        buttonBackgroundColor: myGradient.colors[1],
+        buttonBackgroundColor: myGradient.colors[2],
         backgroundColor: Colors.transparent,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),

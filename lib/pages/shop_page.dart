@@ -46,7 +46,7 @@ class _ShopPageState extends State<ShopPage> {
     return DefaultTabController(
       length: myTabs.length,
       child: Container(
-        decoration: const BoxDecoration(gradient: myGradient),
+        decoration: const BoxDecoration(color: Colors.transparent),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -98,7 +98,7 @@ class _ShopPageState extends State<ShopPage> {
                         hintText: 'Search flavors...',
                         prefixIcon: const Icon(Icons.search),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
+                          borderRadius: BorderRadius.circular(40),
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
@@ -111,7 +111,10 @@ class _ShopPageState extends State<ShopPage> {
                           30.0), // Espace entre la barre de recherche et le TabBar
                   TabBar(
                     tabs: myTabs,
-                    indicatorColor: Color.fromARGB(213, 146, 254, 157),
+                    unselectedLabelColor: Colors.white,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: BoxDecoration(
+                        shape: BoxShape.circle, color: highlightColor),
                   ),
                 ],
               ),

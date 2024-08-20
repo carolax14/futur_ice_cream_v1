@@ -68,17 +68,17 @@ class IceCreamTile extends StatelessWidget {
             // ice cream flavor
             Text(
               iceCream.name,
-              style: TextStyle(
-                color: bodyText1,
+              style: const TextStyle(
+                color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
             const SizedBox(height: 0),
-            Text(
+            const Text(
               '120 kal',
               style: TextStyle(
-                color: bodyText2,
+                color: Colors.black38,
               ),
             ),
 
@@ -92,7 +92,7 @@ class IceCreamTile extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       isFavorited ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorited ? Colors.red : buttonColor,
+                      color: isFavorited ? Colors.red : Colors.black26,
                     ),
                     onPressed: () {
                       setState(() {
@@ -103,9 +103,9 @@ class IceCreamTile extends StatelessWidget {
 
                   // view button
                   IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: bodyText2,
+                    icon: const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.black54,
                     ),
                     onPressed: onPressed,
                   ),

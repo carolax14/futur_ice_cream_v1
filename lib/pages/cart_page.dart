@@ -38,16 +38,16 @@ class _CartPageState extends State<CartPage> {
       builder: (context, value, child) => Column(
         children: [
           // heading
-          Row(
+          const Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
+                padding: EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
                 child: Text(
                   'Your Cart',
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                      color: buttonColor),
+                      color: Colors.white),
                 ),
               ),
             ],
@@ -71,7 +71,10 @@ class _CartPageState extends State<CartPage> {
           ),
 
           // pay button
-          MyButton(text: "Pay now", onTap: payNow)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: MyButton(text: "Pay now", onTap: payNow),
+          )
         ],
       ),
     );

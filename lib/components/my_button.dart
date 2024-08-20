@@ -30,7 +30,7 @@ class MyButton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(40),
         ),
         padding: const EdgeInsets.all(25),
         child: Center(
