@@ -117,7 +117,7 @@ class _ShopPageState extends State<ShopPage> {
                     unselectedLabelColor: Colors.white,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicator: BoxDecoration(
-                        shape: BoxShape.circle, color: highlightColor),
+                        shape: BoxShape.circle, color: primaryColor),
                   ),
                 ],
               ),

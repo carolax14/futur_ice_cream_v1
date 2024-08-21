@@ -121,9 +121,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
                       likeBuilder: (isTapped) {
                         return Icon(
                           Icons.favorite,
-                          color: isTapped
-                              ? const Color(0xffe684ae)
-                              : Colors.white38,
+                          color: isTapped ? iconColor : Colors.white38,
                         );
                       },
                       onTap: (isLiked) async {

@@ -48,7 +48,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enableInfiniteScroll: true,
                       autoPlayAnimationDuration:
-                          const Duration(milliseconds: 3000),
+                          const Duration(milliseconds: 900),
                       viewportFraction: 0.8,
                     ),
                     itemCount: favorites.length,
@@ -111,8 +111,8 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
                             Container(
                               width: 40,
                               height: 40,
-                              decoration: const BoxDecoration(
-                                color: Color(0xffe684ae), // Button color
+                              decoration: BoxDecoration(
+                                color: iconColor, // Button color
                                 shape: BoxShape.circle,
                               ),
                               child: IconButton(
