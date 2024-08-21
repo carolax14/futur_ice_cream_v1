@@ -3,6 +3,7 @@ import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream_shop.dart';
 import 'package:futur_ice_cream_v1/pages/intro_page.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             // Set Montserrat as primary font
-            scaffoldBackgroundColor:
-                Colors.transparent, // Overall background color
+            scaffoldBackgroundColor: Colors.transparent,
+            textTheme: GoogleFonts.montserratTextTheme(),
+            // Overall background color
           ),
           home: const IntroPage(),
         ),

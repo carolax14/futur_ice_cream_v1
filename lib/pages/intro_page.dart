@@ -106,11 +106,11 @@ class _IntroPageState extends State<IntroPage>
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: buttonColor,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: const Text(
+                      borderRadius: BorderRadius.circular(40)),
+                  child: Text(
                     "Enter Shop",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: buttonTextColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),

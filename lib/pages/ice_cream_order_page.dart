@@ -76,20 +76,20 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: const Color.fromARGB(108, 153, 142, 224),
         elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.grey[900],
+            color: buttonTextColor,
           ),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(8),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(108, 153, 142, 224),
+          //borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Column(
@@ -109,7 +109,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
                   // heading
                   const Text(
                     "Q U A N T I T Y",
-                    style: TextStyle(color: Colors.grey, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   const SizedBox(height: 15),
                   // counter
@@ -120,7 +120,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
                       IconButton(
                         onPressed: decrement,
                         icon: const Icon(Icons.remove),
-                        color: Colors.grey,
+                        color: Colors.white,
                       ),
 
                       // count
@@ -147,7 +147,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
                       IconButton(
                         onPressed: increment,
                         icon: const Icon(Icons.add),
-                        color: Colors.grey,
+                        color: Colors.white,
                       ),
                     ],
                   ),
@@ -159,16 +159,16 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
               // size
               const Text(
                 "KALORIES",
-                style: TextStyle(color: Colors.grey, fontSize: 20),
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "120 kal",
+                    "120",
                     style: TextStyle(
-                        color: bodyText1,
+                        color: cardColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   )

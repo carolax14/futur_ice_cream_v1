@@ -39,13 +39,13 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CurvedNavigationBar(
         index: _selectedIndex,
         height: 60.0,
-        items: const <Widget>[
-          Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.favorite, size: 30, color: Colors.white),
-          Icon(Icons.shopping_bag, size: 30, color: Colors.white),
+        items: <Widget>[
+          Icon(Icons.home, size: 30, color: buttonTextColor),
+          Icon(Icons.favorite, size: 30, color: buttonTextColor),
+          Icon(Icons.shopping_bag, size: 30, color: buttonTextColor),
         ],
         color: Colors.white30,
-        buttonBackgroundColor: myGradient.colors[2],
+        buttonBackgroundColor: primaryColor,
         backgroundColor: Colors.transparent,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),

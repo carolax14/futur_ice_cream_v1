@@ -23,7 +23,7 @@ class MyTab extends StatelessWidget {
         ),
         child: Image.asset(
           iconPath,
-          color: Colors.white,
+          color: buttonTextColor,
         ),
       ),
     );

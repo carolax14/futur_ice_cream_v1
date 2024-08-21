@@ -3,6 +3,7 @@ import "package:futur_ice_cream_v1/components/my_tab.dart";
 import "package:futur_ice_cream_v1/const.dart";
 import "package:futur_ice_cream_v1/pages/intro_page.dart";
 import "package:futur_ice_cream_v1/pages/tabs/cornet_tab.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 /*
 
@@ -57,14 +58,13 @@ class _ShopPageState extends State<ShopPage> {
                 'Explore Our Flavors',
                 style: TextStyle(
                     fontSize: 22,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
             ),
             actions: [
               IconButton(
-                icon:
-                    const Icon(Icons.exit_to_app_outlined, color: Colors.white),
+                icon: Icon(Icons.exit_to_app_outlined, color: buttonTextColor),
                 onPressed: () {
                   // Naviguer vers la page des paramètres ou exécuter une autre action
                   Navigator.push(

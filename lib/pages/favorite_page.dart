@@ -20,7 +20,6 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
           const Padding(
             padding: EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
             child: Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Favorite Ice Creams',
@@ -81,20 +80,22 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                FavoriteIceCreamsService.removeFavorite(
-                                    iceCream);
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  myGradient.colors[4], // Button color
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffe684ae), // Couleur du bouton
+                              shape: BoxShape.circle,
                             ),
-                            child: const Text(
-                              'Remove',
-                              style: TextStyle(color: Colors.white),
+                            child: IconButton(
+                              icon:
+                                  const Icon(Icons.delete, color: Colors.white),
+                              onPressed: () {
+                                setState(() {
+                                  FavoriteIceCreamsService.removeFavorite(
+                                      iceCream);
+                                });
+                              },
                             ),
                           ),
                         ],

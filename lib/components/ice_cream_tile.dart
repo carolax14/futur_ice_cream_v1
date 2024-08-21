@@ -37,7 +37,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: secondaryHeaderColor,
+                    color: hintColor,
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
@@ -95,7 +95,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
                         return Icon(
                           Icons.favorite,
                           color: isTapped
-                              ? const Color.fromARGB(204, 187, 10, 99)
+                              ? const Color(0xffe684ae)
                               : Colors.white38,
                         );
                       },
