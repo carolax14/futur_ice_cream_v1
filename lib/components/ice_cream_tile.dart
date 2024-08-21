@@ -3,7 +3,6 @@ import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/favorite_service.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:like_button/like_button.dart';
-// Importez le service de favoris
 
 class IceCreamTile extends StatefulWidget {
   final IceCream iceCream;
@@ -28,6 +27,14 @@ class _IceCreamTileState extends State<IceCreamTile> {
         decoration: BoxDecoration(
           color: Colors.white24,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1), // Couleur de l'ombre
+              spreadRadius: 2, // Rayon de diffusion de l'ombre
+              blurRadius: 8, // Rayon de flou de l'ombre
+              offset: const Offset(0, 4), // Décalage de l'ombre (x, y)
+            ),
+          ],
         ),
         child: Column(
           children: [
@@ -42,6 +49,16 @@ class _IceCreamTileState extends State<IceCreamTile> {
                       bottomLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Colors.black.withOpacity(0.2), // Couleur de l'ombre
+                        spreadRadius: 1, // Étendue de l'ombre
+                        blurRadius: 4, // Flou de l'ombre
+                        offset:
+                            const Offset(0, 2), // Décalage de l'ombre (x, y)
+                      ),
+                    ],
                   ),
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -60,7 +77,12 @@ class _IceCreamTileState extends State<IceCreamTile> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 54.0, vertical: 0),
-              child: Image.asset(widget.iceCream.imagePath),
+              child: Image.asset(
+                widget.iceCream.imagePath,
+                height: 75,
+                width: double.infinity,
+                //fit: BoxFit.cover,
+              ),
             ),
 
             // ice cream flavor
@@ -82,13 +104,16 @@ class _IceCreamTileState extends State<IceCreamTile> {
               ),
             ),
 
+            // Spacer to push buttons to the bottom
+            const Spacer(),
+
             // love icon + view button
             Padding(
               padding: const EdgeInsets.all(1.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // love icon
+                  // love icon (bottom left)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: LikeButton(
@@ -113,17 +138,20 @@ class _IceCreamTileState extends State<IceCreamTile> {
                     ),
                   ),
 
-                  // view button
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.black54,
+                  // view button (bottom right)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_forward_rounded,
+                        color: Colors.black54,
+                      ),
+                      onPressed: widget.onPressed,
                     ),
-                    onPressed: widget.onPressed,
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
