@@ -42,4 +42,4 @@ var carte = Colors.grey[200];
 var bodyText1 = const Color(0xFF2E2E2E); // Texte Principal
 var bodyText2 = const Color(0xFF757575); // Texte Secondaire
 
-var highlightColor = const Color(0xffef9393); // Éléments Interactifs
+var highlightColor = Color.fromARGB(255, 147, 239, 204); // Éléments Interactifs

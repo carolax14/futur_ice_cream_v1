@@ -5,15 +5,6 @@ import '../const.dart';
 import '../models/ice_cream.dart';
 import '../models/ice_cream_shop.dart';
 
-/*
-
-iceCream ORDER PAGE
-
-User can select the quantity and size of their iceCream order.
-User can 'Add to cart' on this page
-
-*/
-
 class IceCreamOrderPage extends StatefulWidget {
   final IceCream iceCream;
   const IceCreamOrderPage({super.key, required this.iceCream});
@@ -23,20 +14,16 @@ class IceCreamOrderPage extends StatefulWidget {
 }
 
 class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
-  // quantity of order
   int quantity = 1;
 
-  // increment quantity
   void increment() {
     setState(() {
-      // max out at 10
       if (quantity < 10) {
         quantity++;
       }
     });
   }
 
-  // decrement quantity
   void decrement() {
     if (quantity > 0) {
       setState(() {
@@ -45,25 +32,33 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
     }
   }
 
-  // add to cart
   void addToCart() {
-    // only add to cart if quantity is greater than 0
     if (quantity > 0) {
       Provider.of<IceCreamShop>(context, listen: false)
           .addItemToCart(widget.iceCream, quantity);
 
-      // pop order screen to go back to shop page
       Navigator.pop(context);
 
-      // let the user know that item was added to cart successfully
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: buttonColor,
-          title: const Center(
-            child: Text(
-              "Successfully added to cart",
-              style: TextStyle(color: Colors.white, fontSize: 14),
+          backgroundColor: Color.fromARGB(255, 108, 209, 170),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          content: const SizedBox(
+            height: 80,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle, color: Colors.white, size: 40),
+                SizedBox(height: 10),
+                Text(
+                  "Successfully added to cart",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
         ),
@@ -89,7 +84,6 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
       body: Container(
         decoration: const BoxDecoration(
           color: Color.fromARGB(108, 153, 142, 224),
-          //borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Column(
@@ -143,7 +137,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
                         ),
                       ),
 
-                      // icrement
+                      // increment
                       IconButton(
                         onPressed: increment,
                         icon: const Icon(Icons.add),
