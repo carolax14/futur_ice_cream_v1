@@ -1,36 +1,98 @@
-// ignore: unused_import
-import "package:flutter/material.dart";
-import 'ice_cream.dart';
+import 'package:flutter/material.dart';
+import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 
 class IceCreamShop extends ChangeNotifier {
   // ice cream for sale list
   final List<IceCream> _shop = [
-    // vanilla
+    /***** Cornet *****/
     IceCream(
         name: 'Vanilla',
         price: '2.5',
-        imagePath: "lib/images/corne_vanilla.png"),
-    // chocolate
+        imagePath: "lib/images/corne_vanilla.png",
+        category: 'Cornet'), // Définir la catégorie
     IceCream(
         name: 'Chocolate',
         price: '3',
-        imagePath: "lib/images/corne_chocolate.png"),
-    // strawberry
+        imagePath: "lib/images/corne_chocolate.png",
+        category: 'Cornet'), // Définir la catégorie
     IceCream(
         name: 'Strawberry',
         price: '3',
-        imagePath: "lib/images/corne_strawberry.png"),
-    // lemon
+        imagePath: "lib/images/corne_strawberry.png",
+        category: 'Cornet'), // Définir la catégorie
     IceCream(
         name: 'Caramel',
         price: '2.5',
-        imagePath: "lib/images/corne_caramel.png"),
-    // watermelon
+        imagePath: "lib/images/corne_caramel.png",
+        category: 'Cornet'), // Définir la catégorie
     IceCream(
         name: 'Rasberry',
         price: '3.5',
-        imagePath: "lib/images/corne_rasberry.png"),
+        imagePath: "lib/images/corne_rasberry.png",
+        category: 'Cornet'),
+
+/***** Candy *****/
+    IceCream(
+        name: 'Candy White',
+        price: '3',
+        imagePath: "lib/images/mag_white.png",
+        category: 'Candy'),
+    IceCream(
+        name: 'Candy Rasberry',
+        price: '3',
+        imagePath: "lib/images/mag_rasberry.png",
+        category: 'Candy'),
+    IceCream(
+        name: 'Candy Pecan',
+        price: '3',
+        imagePath: "lib/images/mag_pecan.png",
+        category: 'Candy'),
+    // Définir la catégorie
+
+    /***** Scoop *****/
+    IceCream(
+        name: 'B&J Chocolate',
+        price: '3',
+        imagePath: "lib/images/bj_chocolate.png",
+        category: 'Scoop'),
+    IceCream(
+        name: 'B&J Pistachio',
+        price: '3',
+        imagePath: "lib/images/bj_pistachio.png",
+        category: 'Scoop'),
+    IceCream(
+        name: 'B&J Chuncky',
+        price: '3',
+        imagePath: "lib/images/bj_chuncky.png",
+        category: 'Scoop'),
+    IceCream(
+        name: 'B&J Cookie Dough',
+        price: '3',
+        imagePath: "lib/images/bj_cookie.png",
+        category: 'Scoop'),
+    /***** Milkshake *****/
+    IceCream(
+        name: 'Milkshake Caramel',
+        price: '3',
+        imagePath: "lib/images/milk_caramel.png",
+        category: 'Milkshake'),
+    IceCream(
+        name: 'Milkshake Choco',
+        price: '3',
+        imagePath: "lib/images/milk_chocolate.png",
+        category: 'Milkshake'),
+    IceCream(
+        name: 'Milkshake Oreo',
+        price: '3',
+        imagePath: "lib/images/milk_oreo.png",
+        category: 'Milkshake'),
+    IceCream(
+        name: 'Milkshake Berry',
+        price: '3',
+        imagePath: "lib/images/milk_strawberry.png",
+        category: 'Milkshake'),
   ];
+
   // user cart
   final List<IceCream> _userCart = [];
 
@@ -42,17 +104,18 @@ class IceCreamShop extends ChangeNotifier {
 
   // add ice cream to cart
   void addItemToCart(IceCream iceCream, int quantity) {
-    // Add the given ice cream item to the user's cart.
     _userCart.add(iceCream);
     notifyListeners();
   }
 
   // remove ice cream from cart
   void removeItemFromCart(IceCream iceCream) {
-    // Remove the given ice cream item from the user's cart.
     _userCart.remove(iceCream);
-    // Notify any listeners that the state of the IceCreamShop has changed.
-    // This will trigger any widgets that depend on the IceCreamShop to rebuild.
     notifyListeners();
+  }
+
+  // filter ice creams by category
+  List<IceCream> getIceCreamsByCategory(String category) {
+    return _shop.where((iceCream) => iceCream.category == category).toList();
   }
 }

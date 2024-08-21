@@ -37,7 +37,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: hintColor,
+                    color: buttonColor,
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
@@ -64,12 +64,14 @@ class _IceCreamTileState extends State<IceCreamTile> {
             ),
 
             // ice cream flavor
-            Text(
-              widget.iceCream.name,
-              style: const TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+            Center(
+              child: Text(
+                widget.iceCream.name,
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
               ),
             ),
             const SizedBox(height: 0),

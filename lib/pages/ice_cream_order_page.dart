@@ -98,7 +98,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
               // iceCream image
               Image.asset(
                 widget.iceCream.imagePath,
-                height: 120,
+                height: 130,
               ),
 
               const SizedBox(height: 50),

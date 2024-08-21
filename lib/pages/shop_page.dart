@@ -2,7 +2,10 @@ import "package:flutter/material.dart";
 import "package:futur_ice_cream_v1/components/my_tab.dart";
 import "package:futur_ice_cream_v1/const.dart";
 import "package:futur_ice_cream_v1/pages/intro_page.dart";
+import "package:futur_ice_cream_v1/pages/tabs/candy_tab.dart";
 import "package:futur_ice_cream_v1/pages/tabs/cornet_tab.dart";
+import "package:futur_ice_cream_v1/pages/tabs/milkshake_tab.dart";
+import "package:futur_ice_cream_v1/pages/tabs/scoop_tab.dart";
 import 'package:google_fonts/google_fonts.dart';
 
 /*
@@ -124,16 +127,17 @@ class _ShopPageState extends State<ShopPage> {
               const Expanded(
             child: TabBarView(
               children: [
-                // burger page
+                // cornet page
                 CornetTab(),
 
-                // smoothie page
-                Center(child: Text("MILKSHAKE TAB")),
+                // milkshake page
+                MilkshakeTab(),
 
-                // pancake page
-                Center(child: Text("SCOOP TAB")),
+                // scoop page
+                ScoopTab(),
 
-                Center(child: Text("CORNET TAB")),
+                // candy page
+                CandyTab(),
               ],
             ),
           ),
