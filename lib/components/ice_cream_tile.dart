@@ -29,10 +29,10 @@ class _IceCreamTileState extends State<IceCreamTile> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1), // Couleur de l'ombre
-              spreadRadius: 2, // Rayon de diffusion de l'ombre
-              blurRadius: 8, // Rayon de flou de l'ombre
-              offset: const Offset(0, 4), // Décalage de l'ombre (x, y)
+              color: Colors.black.withOpacity(0.1), // Shadow color
+              spreadRadius: 2, // Shadow Casting Radius
+              blurRadius: 8, // Shadow blur ray
+              offset: const Offset(0, 4), // Shadow offset (x, y)
             ),
           ],
         ),

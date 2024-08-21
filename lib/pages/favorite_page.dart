@@ -48,57 +48,88 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enableInfiniteScroll: true,
                       autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
+                          const Duration(milliseconds: 3000),
                       viewportFraction: 0.8,
                     ),
                     itemCount: favorites.length,
                     itemBuilder: (BuildContext context, int itemIndex,
                         int pageViewIndex) {
                       IceCream iceCream = favorites[itemIndex];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Image.asset(
-                              iceCream.imagePath,
-                              fit: BoxFit.cover,
+                      return Container(
+                        width: MediaQuery.of(context).size.width *
+                            0.85, // Adjust width to 85% of screen
+                        decoration: BoxDecoration(
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Colors.black.withOpacity(0.1), // Shadow color
+                              spreadRadius: 2, // Shadow Expanse
+                              blurRadius: 8, // Shadow Blur
+                              offset:
+                                  const Offset(0, 4), // Shadow offset (x, y)
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            iceCream.name,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                          ],
+                        ),
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // Image of ice
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  iceCream.imagePath,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
-                          Text(
-                            '${iceCream.price}€',
-                            style: const TextStyle(
-                              color: Colors.black38,
-                              fontSize: 14,
+                            const SizedBox(height: 8),
+
+                            // Name of ice cream
+                            Text(
+                              iceCream.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffe684ae), // Couleur du bouton
-                              shape: BoxShape.circle,
+
+                            // Ice cream prices
+                            Text(
+                              '${iceCream.price}€',
+                              style: const TextStyle(
+                                color: Colors.black38,
+                                fontSize: 14,
+                              ),
                             ),
-                            child: IconButton(
-                              icon:
-                                  const Icon(Icons.delete, color: Colors.white),
-                              onPressed: () {
-                                setState(() {
-                                  FavoriteIceCreamsService.removeFavorite(
-                                      iceCream);
-                                });
-                              },
+                            const SizedBox(height: 8),
+
+                            // Delete button at the bottom
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffe684ae), // Button color
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    FavoriteIceCreamsService.removeFavorite(
+                                        iceCream);
+                                  });
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       );
                     },
                   ),
