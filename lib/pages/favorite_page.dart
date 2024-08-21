@@ -9,7 +9,33 @@ class FavoriteIceCreamsPage extends StatefulWidget {
   _FavoriteIceCreamsPageState createState() => _FavoriteIceCreamsPageState();
 }
 
-class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
+class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: -50, end: 0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.bounceOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<IceCream> favorites = FavoriteIceCreamsService.getFavorites();
@@ -33,10 +59,20 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage> {
           ),
           Expanded(
             child: favorites.isEmpty
-                ? const Center(
-                    child: Text(
-                      'No favorites yet!',
-                      style: TextStyle(fontSize: 20, color: Colors.white60),
+                ? Center(
+                    child: AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(0, _animation.value),
+                          child: Image.asset(
+                            'lib/icons/broken-heart.png', // Replace with the correct path to your heart image
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.contain,
+                          ),
+                        );
+                      },
                     ),
                   )
                 : CarouselSlider.builder(
