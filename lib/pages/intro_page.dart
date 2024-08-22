@@ -101,7 +101,7 @@ class _IntroPageState extends State<IntroPage>
                   ),
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(20),
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -112,7 +112,7 @@ class _IntroPageState extends State<IntroPage>
                     style: TextStyle(
                       color: buttonTextColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                     textAlign: TextAlign.center,
                   ),

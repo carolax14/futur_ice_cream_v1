@@ -5,6 +5,8 @@ import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class FavoriteIceCreamsPage extends StatefulWidget {
+  const FavoriteIceCreamsPage({super.key});
+
   @override
   _FavoriteIceCreamsPageState createState() => _FavoriteIceCreamsPageState();
 }
@@ -17,11 +19,14 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
   @override
   void initState() {
     super.initState();
+
+    // Initialize the AnimationController
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )..repeat(reverse: true);
+    )..repeat(reverse: true); // Repeat the animation back and forth
 
+    // Initialize the bounce animation for the heart image
     _animation = Tween<double>(begin: -50, end: 0).animate(
       CurvedAnimation(
         parent: _controller,
@@ -32,17 +37,19 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller.dispose(); // Dispose of the animation controller when done
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Retrieve the list of favorite ice creams
     List<IceCream> favorites = FavoriteIceCreamsService.getFavorites();
 
     return Scaffold(
       body: Column(
         children: [
+          // Title of the page
           const Padding(
             padding: EdgeInsets.only(left: 25.0, top: 25, bottom: 25),
             child: Row(
@@ -58,6 +65,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
             ),
           ),
           Expanded(
+            // Display either the list of favorites or an empty state with animation
             child: favorites.isEmpty
                 ? Center(
                     child: AnimatedBuilder(
@@ -87,9 +95,10 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                           const Duration(milliseconds: 900),
                       viewportFraction: 0.8,
                     ),
-                    itemCount: favorites.length,
+                    itemCount: favorites.length, // Number of favorite items
                     itemBuilder: (BuildContext context, int itemIndex,
                         int pageViewIndex) {
+                      // Get the individual ice cream from the favorites list
                       IceCream iceCream = favorites[itemIndex];
                       return Container(
                         width: MediaQuery.of(context).size.width *
@@ -101,10 +110,10 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                             BoxShadow(
                               color:
                                   Colors.black.withOpacity(0.1), // Shadow color
-                              spreadRadius: 2, // Shadow Expanse
-                              blurRadius: 8, // Shadow Blur
+                              spreadRadius: 2, // Spread radius of shadow
+                              blurRadius: 8, // Blur radius of shadow
                               offset:
-                                  const Offset(0, 4), // Shadow offset (x, y)
+                                  const Offset(0, 4), // Offset of shadow (x, y)
                             ),
                           ],
                         ),
@@ -112,7 +121,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            // Image of ice
+                            // Image of the ice cream
                             Expanded(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
@@ -124,7 +133,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                             ),
                             const SizedBox(height: 8),
 
-                            // Name of ice cream
+                            // Name of the ice cream
                             Text(
                               iceCream.name,
                               style: const TextStyle(
@@ -133,7 +142,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                               ),
                             ),
 
-                            // Ice cream prices
+                            // Price of the ice cream
                             Text(
                               '${iceCream.price}€',
                               style: const TextStyle(
@@ -143,7 +152,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                             ),
                             const SizedBox(height: 8),
 
-                            // Delete button at the bottom
+                            // Delete button to remove the ice cream from favorites
                             Container(
                               width: 40,
                               height: 40,
@@ -159,7 +168,7 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                                 onPressed: () {
                                   setState(() {
                                     FavoriteIceCreamsService.removeFavorite(
-                                        iceCream);
+                                        iceCream); // Remove from favorites
                                   });
                                 },
                               ),

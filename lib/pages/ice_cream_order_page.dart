@@ -16,15 +16,19 @@ class IceCreamOrderPage extends StatefulWidget {
 class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
   int quantity = 1;
 
+  // Function to increment the quantity of ice cream
   void increment() {
     setState(() {
+      // Maximum quantity is 10
       if (quantity < 10) {
         quantity++;
       }
     });
   }
 
+  // Function to decrement the quantity of ice cream
   void decrement() {
+    // Prevent the quantity from going below 0
     if (quantity > 0) {
       setState(() {
         quantity--;
@@ -32,13 +36,18 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
     }
   }
 
+  // Function to add the selected ice cream to the cart
   void addToCart() {
+    // Only add to cart if quantity is greater than 0
     if (quantity > 0) {
+      // Add the ice cream to the cart using the Provider
       Provider.of<IceCreamShop>(context, listen: false)
           .addItemToCart(widget.iceCream, quantity);
 
+      // Close the order page and return to the shop page
       Navigator.pop(context);
 
+      // Show a dialog to confirm the successful addition of the item to the cart
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -89,7 +98,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // iceCream image
+              // Ice cream image
               Image.asset(
                 widget.iceCream.imagePath,
                 height: 130,
@@ -97,27 +106,27 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
 
               const SizedBox(height: 50),
 
-              // quantity
+              // Quantity selection
               Column(
                 children: [
-                  // heading
+                  // Heading for quantity
                   const Text(
                     "Q U A N T I T Y",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   const SizedBox(height: 15),
-                  // counter
+                  // Counter for quantity selection
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // decrement
+                      // Decrement button
                       IconButton(
                         onPressed: decrement,
                         icon: const Icon(Icons.remove),
                         color: Colors.white,
                       ),
 
-                      // count
+                      // Display the current quantity
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -137,7 +146,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
                         ),
                       ),
 
-                      // increment
+                      // Increment button
                       IconButton(
                         onPressed: increment,
                         icon: const Icon(Icons.add),
@@ -150,7 +159,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
 
               const SizedBox(height: 50),
 
-              // size
+              // Display the number of calories
               const Text(
                 "KALORIES",
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -171,7 +180,7 @@ class _IceCreamOrderPageState extends State<IceCreamOrderPage> {
 
               const SizedBox(height: 75),
 
-              // add to cart button
+              // Button to add the ice cream to the cart
               MyButton(text: "Add to cart", onTap: addToCart),
             ],
           ),
