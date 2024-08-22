@@ -30,15 +30,15 @@ class _IceCreamTileState extends State<IceCreamTile> {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1), // Shadow color
-              spreadRadius: 2, // Shadow Casting Radius
-              blurRadius: 8, // Shadow blur ray
+              spreadRadius: 2, // Shadow casting radius
+              blurRadius: 8, // Shadow blur radius
               offset: const Offset(0, 4), // Shadow offset (x, y)
             ),
           ],
         ),
         child: Column(
           children: [
-            // price
+            // Price tag
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -51,12 +51,10 @@ class _IceCreamTileState extends State<IceCreamTile> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color:
-                            Colors.black.withOpacity(0.2), // Couleur de l'ombre
-                        spreadRadius: 1, // Étendue de l'ombre
-                        blurRadius: 4, // Flou de l'ombre
-                        offset:
-                            const Offset(0, 2), // Décalage de l'ombre (x, y)
+                        color: Colors.black.withOpacity(0.2), // Shadow color
+                        spreadRadius: 1, // Shadow casting radius
+                        blurRadius: 4, // Shadow blur radius
+                        offset: const Offset(0, 2), // Shadow offset (x, y)
                       ),
                     ],
                   ),
@@ -73,7 +71,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
               ],
             ),
 
-            // ice cream picture
+            // Ice cream image
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 54.0, vertical: 0),
@@ -81,11 +79,11 @@ class _IceCreamTileState extends State<IceCreamTile> {
                 widget.iceCream.imagePath,
                 height: 75,
                 width: double.infinity,
-                //fit: BoxFit.cover,
+                // fit: BoxFit.cover,
               ),
             ),
 
-            // ice cream flavor
+            // Ice cream flavor name
             Center(
               child: Text(
                 widget.iceCream.name,
@@ -98,7 +96,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
             ),
             const SizedBox(height: 0),
             const Text(
-              '120 kal',
+              '120 kal', // Calorie count
               style: TextStyle(
                 color: Colors.black38,
               ),
@@ -107,13 +105,13 @@ class _IceCreamTileState extends State<IceCreamTile> {
             // Spacer to push buttons to the bottom
             const Spacer(),
 
-            // love icon + view button
+            // Like icon + view button
             Padding(
               padding: const EdgeInsets.all(1.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // love icon (bottom left)
+                  // Like icon (bottom left)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: LikeButton(
@@ -136,7 +134,7 @@ class _IceCreamTileState extends State<IceCreamTile> {
                     ),
                   ),
 
-                  // view button (bottom right)
+                  // View button (bottom right)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(

@@ -1,5 +1,4 @@
 import 'package:futur_ice_cream_v1/components/ice_cream_tile.dart';
-import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream_shop.dart';
 import 'package:futur_ice_cream_v1/pages/ice_cream_order_page.dart';
@@ -14,6 +13,7 @@ class CandyTab extends StatefulWidget {
 }
 
 class _CandyTabState extends State<CandyTab> {
+  // Function to navigate to the IceCreamOrderPage when a user selects an ice cream
   void goToIceCreamPage(IceCream iceCream) {
     Navigator.push(
       context,

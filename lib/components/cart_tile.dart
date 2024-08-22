@@ -6,8 +6,8 @@ import '../models/ice_cream.dart';
 
 CART TILE
 
-This is the tile seen on the iceCream order page.
-User can remove from cart by tapping the tile.
+This is the tile seen on the ice cream order page.
+User can remove an item from the cart by tapping the delete icon.
 
 */
 
@@ -30,10 +30,10 @@ class CartTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2), // Couleur de l'ombre
-            spreadRadius: 2, // Étendue de l'ombre
-            blurRadius: 8, // Flou de l'ombre
-            offset: const Offset(0, 4), // Décalage de l'ombre (x, y)
+            color: Colors.black.withOpacity(0.2), // Shadow color
+            spreadRadius: 2, // Spread radius of the shadow
+            blurRadius: 8, // Blur radius of the shadow
+            offset: const Offset(0, 4), // Shadow offset (x, y)
           ),
         ],
       ),
@@ -51,13 +51,13 @@ class CartTile extends StatelessWidget {
         subtitle: Text('${iceCream.price}€'),
         trailing: Container(
           decoration: BoxDecoration(
-            color: iconColor, // Couleur de fond rose
-            borderRadius: BorderRadius.circular(50), // Arrondir les coins
+            color: iconColor, // Background color for the delete button
+            borderRadius: BorderRadius.circular(50), // Rounded corners
           ),
           child: IconButton(
             icon: const Icon(
               Icons.delete,
-              color: Colors.white, // Couleur de l'icône en blanc pour contraste
+              color: Colors.white, // Icon color set to white for contrast
             ),
             onPressed: () {
               _showConfirmationDialog(context);
@@ -68,16 +68,23 @@ class CartTile extends StatelessWidget {
     );
   }
 
+  /// Shows a confirmation dialog before removing the item from the cart.
+  ///
+  /// This method displays a dialog with "Cancel" and "Delete" options.
+  /// If "Delete" is selected, the item is removed from the cart.
+  ///
+  /// @param context The BuildContext used to show the dialog.
   void _showConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return Dialog(
           backgroundColor:
-              Colors.transparent, // Fond transparent pour le Dialog
+              Colors.transparent, // Transparent background for the dialog
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white60.withOpacity(0.3), // Fond rose transparent
+              color: Colors.white60
+                  .withOpacity(0.3), // Light pink transparent background
               borderRadius: BorderRadius.circular(12),
             ),
             padding: const EdgeInsets.all(20),
@@ -116,8 +123,7 @@ class CartTile extends StatelessWidget {
                         style: TextStyle(color: Colors.black),
                       ),
                       onPressed: () {
-                        Navigator.of(context)
-                            .pop(); // Fermer la boîte de dialogue
+                        Navigator.of(context).pop(); // Close the dialog
                       },
                     ),
                     ElevatedButton(
@@ -133,10 +139,9 @@ class CartTile extends StatelessWidget {
                       ),
                       onPressed: () {
                         if (onPressed != null) {
-                          onPressed!(); // Exécuter l'action de suppression
+                          onPressed!(); // Execute the delete action
                         }
-                        Navigator.of(context)
-                            .pop(); // Fermer la boîte de dialogue
+                        Navigator.of(context).pop(); // Close the dialog
                       },
                     ),
                   ],

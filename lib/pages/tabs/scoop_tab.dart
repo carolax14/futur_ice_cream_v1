@@ -1,5 +1,4 @@
 import 'package:futur_ice_cream_v1/components/ice_cream_tile.dart';
-import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream_shop.dart';
 import 'package:futur_ice_cream_v1/pages/ice_cream_order_page.dart';
@@ -14,6 +13,7 @@ class ScoopTab extends StatefulWidget {
 }
 
 class _ScoopTabState extends State<ScoopTab> {
+  // Function to navigate to the IceCreamOrderPage when a user selects an ice cream
   void goToIceCreamPage(IceCream iceCream) {
     Navigator.push(
       context,
@@ -29,7 +29,7 @@ class _ScoopTabState extends State<ScoopTab> {
   Widget build(BuildContext context) {
     return Consumer<IceCreamShop>(
       builder: (context, value, child) {
-        // Filtrer les glaces par catégorie "Candy"
+        // Filter the ice creams by the "Scoop" category
         List<IceCream> scoopIceCreams = value.getIceCreamsByCategory('Scoop');
 
         return Column(
@@ -49,16 +49,19 @@ class _ScoopTabState extends State<ScoopTab> {
             const SizedBox(height: 2),
             Expanded(
               child: GridView.builder(
-                itemCount: scoopIceCreams.length,
+                itemCount: scoopIceCreams
+                    .length, // Number of ice creams in the "Scoop" category
                 padding: const EdgeInsets.all(12),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 1 / 1.5,
                 ),
                 itemBuilder: (context, index) {
+                  // Get the individual ice cream
                   IceCream eachIceCream = scoopIceCreams[index];
                   return IceCreamTile(
                     iceCream: eachIceCream,
+                    // Navigate to the order page for the selected ice cream
                     onPressed: () => goToIceCreamPage(eachIceCream),
                   );
                 },
