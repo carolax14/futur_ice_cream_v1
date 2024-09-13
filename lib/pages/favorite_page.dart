@@ -3,6 +3,7 @@ import 'package:futur_ice_cream_v1/const.dart';
 import 'package:futur_ice_cream_v1/models/favorite_service.dart';
 import 'package:futur_ice_cream_v1/models/ice_cream.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:futur_ice_cream_v1/pages/ice_cream_order_page.dart';
 
 class FavoriteIceCreamsPage extends StatefulWidget {
   const FavoriteIceCreamsPage({super.key});
@@ -100,80 +101,91 @@ class _FavoriteIceCreamsPageState extends State<FavoriteIceCreamsPage>
                         int pageViewIndex) {
                       // Get the individual ice cream from the favorites list
                       IceCream iceCream = favorites[itemIndex];
-                      return Container(
-                        width: MediaQuery.of(context).size.width *
-                            0.85, // Adjust width to 85% of screen
-                        decoration: BoxDecoration(
-                          color: Colors.white24,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color:
-                                  Colors.black.withOpacity(0.1), // Shadow color
-                              spreadRadius: 2, // Spread radius of shadow
-                              blurRadius: 8, // Blur radius of shadow
-                              offset:
-                                  const Offset(0, 4), // Offset of shadow (x, y)
+                      return GestureDetector(
+                        onTap: () {
+                          // Navigate to IceCreamOrderPage when the card is clicked
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => IceCreamOrderPage(
+                                iceCream: iceCream,
+                              ),
                             ),
-                          ],
-                        ),
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // Image of the ice cream
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  iceCream.imagePath,
-                                  fit: BoxFit.cover,
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width *
+                              0.85, // Adjust width to 85% of screen
+                          decoration: BoxDecoration(
+                            color: Colors.white24,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                spreadRadius: 2,
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Image of the ice cream
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.asset(
+                                    iceCream.imagePath,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 8),
+                              const SizedBox(height: 8),
 
-                            // Name of the ice cream
-                            Text(
-                              iceCream.name,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-
-                            // Price of the ice cream
-                            Text(
-                              '${iceCream.price}€',
-                              style: const TextStyle(
-                                color: Colors.black38,
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-
-                            // Delete button to remove the ice cream from favorites
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: iconColor, // Button color
-                                shape: BoxShape.circle,
-                              ),
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.white,
+                              // Name of the ice cream
+                              Text(
+                                iceCream.name,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    FavoriteIceCreamsService.removeFavorite(
-                                        iceCream); // Remove from favorites
-                                  });
-                                },
                               ),
-                            ),
-                          ],
+
+                              // Price of the ice cream
+                              Text(
+                                '${iceCream.price}€',
+                                style: const TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+
+                              // Delete button to remove the ice cream from favorites
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: iconColor,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      FavoriteIceCreamsService.removeFavorite(
+                                          iceCream); // Remove from favorites
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
