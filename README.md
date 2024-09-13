@@ -142,6 +142,7 @@ La `FavoritePage` affiche les crèmes glacées que l'utilisateur a marquées com
 **Fonctionnalités** :
 - Affiche une liste des crèmes glacées favorites sous forme de carrousel.
 - Permet de retirer des articles de la liste des favoris.
+- Se dirriger vers la page de détail d'une glace
 
 ### 6. `ice_cream_order_page.dart`
 **Description** :  
